@@ -1,8 +1,7 @@
 local M = {}
 
 local function get_xresources_color(c)
-  local cmd = string.format('xrdb -query | grep %s -m 1 | cut -f 2', c)
-  local color = io.popen(cmd)
+  local color = io.popen(('xrdb -query | grep %s -m 1 | cut -f 2'):format(c))
   if color then color = color:read("*l") end
   return color
 end
