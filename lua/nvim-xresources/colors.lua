@@ -58,8 +58,17 @@ for color, hex in pairs(config.palette_overrides) do
   colors[color] = hex
 end
 
-colors["black2"] = Tools.light(colors.black, 0.2)
-colors["black1"] = Tools.light(colors.black, -0.1)
-colors['grey'] = Tools.light(colors.black, 1)
+local adjustContrast = function(hexColor, contrast)
+  return Tools.light(hexColor, contrast)
+end
+
+local contrast = config.contrast
+
+colors.fg1  = adjustContrast(colors.fg, contrast)
+colors.bg1  = adjustContrast(colors.bg, contrast * 0.2)
+colors.bg2  = adjustContrast(colors.bg, contrast * 0.5)
+colors.bg3  = adjustContrast(colors.bg, contrast * 0.9)
+
+colors['grey'] = Tools.shaker(colors.white, colors.black)
 
 return colors
