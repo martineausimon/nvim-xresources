@@ -88,7 +88,7 @@ an example setup :
 
 ## CREDITS, INSPIRATION
 
-[gruvbox.nvim](https://github.com/ellisonleao/gruvbox.nvim)
-[nord.nvim](https://github.com/shaunsingh/nord.nvim)
-[xresources-nvim](https://github.com/nekonako/xresources-nvim)
-[nvim-base16](https://github.com/RRethy/nvim-base16)
+[gruvbox.nvim](https://github.com/ellisonleao/gruvbox.nvim)  
+[nord.nvim](https://github.com/shaunsingh/nord.nvim)  
+[xresources-nvim](https://github.com/nekonako/xresources-nvim)  
+[nvim-base16](https://github.com/RRethy/nvim-base16)  
