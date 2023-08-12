@@ -185,6 +185,24 @@ M.loadPlugins = function()
     TelescopeResultsTitle = { guifg = C.yellow, guibg = nil, gui = 'underline', guisp = nil },
     TelescopeSelection    = { guifg = nil, guibg = C.black1, gui = nil, guisp = nil },
     TelescopePreviewLine  = { guifg = nil, guibg = C.black1, gui = 'none', guisp = nil },
+    NvimTreeNormal        = 'NormalFloat',
+    NvimTreeSymlink       = { guifg = C.cyan, guibg = C.none, gui = 'bold', guisp = nil },
+    NvimTreeRootFolder    = { guifg = C.magenta, guibg = C.none, gui = 'bold', guisp = nil },
+    NvimTreeFolderIcon    = { guifg = C.blue, guigb = C.none, gui = 'bold', guisp = nil },
+    NvimTreeFileIcon      = { guifg = C.light_blue, guibg = C.none, gui = nil, guisp = nil },
+    NvimTreeExecFile      = { guifg = C.green, guibg = C.none, gui = 'bold', guisp = nil },
+    NvimTreeOpenedFile    = { guifg = C.light_red, guibg = C.none, gui = 'bold', guisp = nil },
+    NvimTreeSpecialFile   = { guifg = C.yellow, guibg = C.none, gui = 'bold,underline', guisp = nil },
+    NvimTreeImageFile     = { guifg = C.magenta, guibg = C.none, gui = 'bold', guisp = nil },
+    NvimTreeIndentMarker  = { guifg = C.light_green, guibg = C.none, gui = nil, guisp = nil },
+    NvimTreeGitDirty      = { guifg = C.yellow, guibg = C.none, gui = nil, guisp = nil },
+    NvimTreeGitStaged     = { guifg = C.yellow, guibg = C.none, gui = nil, guisp = nil },
+    NvimTreeGitMerge      = { guifg = C.magenta, guibg = C.none, gui = nil, guisp = nil },
+    NvimTreeGitRenamed    = { guifg = C.magenta, guibg = C.none, gui = nil, guisp = nil },
+    NvimTreeGitNew        = { guifg = C.yellow, guibg = C.none, gui = nil, guisp = nil },
+    NvimTreeGitDeleted    = { guifg = C.red, guibg = C.none, gui = nil, guisp = nil },
+    NvimTreeWindowPicker  = { guifg = C.cyan, guibg = C.none, gui = nil, guisp = nil },
+
   }
 end
 
