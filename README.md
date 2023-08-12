@@ -15,6 +15,10 @@ This plugin aims for simplicity, though I have incorporated a few extra choices:
 * **custom_highlight_groups**: override or add groups
 * **treesitter support**
 
+<p align="center">
+<img src="https://user-images.githubusercontent.com/89019438/260174496-d7fc80a6-5b77-45ae-aece-3b2d3193e246.png">
+</p>
+
 ## CONTRIBUTING
 
 This plugin is a work in progress, and there are many things missing! I am more than willing to accept pull requests to help improve it.
