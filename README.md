@@ -30,8 +30,10 @@ This plugin is a work in progress, and there are many things missing! I am more 
 ```lua
 {
   'martineausimon/nvim-xresources',
+  lazy = false,
   priority = 1000,
   config = function()
+    vim.cmd('colorscheme xresources')
     require('nvim-xresources').setup({
       xresources_path = os.getenv("HOME") .. '/.Xresources',
       auto_light = {
@@ -59,9 +61,13 @@ an example setup :
 ```lua
 {
   'martineausimon/nvim-xresources',
+  lazy = false,
   priority = 1000,
   config = function()
+    vim.cmd('colorscheme xresources')
+
     local C = require('nvim-xresources.colors')
+
     require('nvim-xresources').setup({
       xresources_path = os.getenv("HOME") .. '/.Xresources',
       auto_light = {
