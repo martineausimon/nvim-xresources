@@ -7,6 +7,7 @@ M.config = {
     value = 0.5,
     exclude = {}
   },
+  contrast = 0.8,
   palette_overrides = {},
   custom_highlight_groups = {},
 }
