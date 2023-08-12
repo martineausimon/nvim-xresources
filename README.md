@@ -29,7 +29,7 @@ This plugin is a work in progress, and there are many things missing! I am more 
 
 ```lua
 {
-  'martineausimon/nvim-xresources/',
+  'martineausimon/nvim-xresources',
   priority = 1000,
   config = function()
     require('nvim-xresources').setup({
@@ -58,7 +58,7 @@ an example setup :
 
 ```lua
 {
-  'martineausimon/nvim-xresources/',
+  'martineausimon/nvim-xresources',
   priority = 1000,
   config = function()
     local C = require('nvim-xresources.colors')
