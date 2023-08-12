@@ -35,6 +35,7 @@ This plugin aims for simplicity, though I have incorporated a few extra choices:
 * **auto_light** feature: useful when Xresources only contains 8 colors
 * **palette_overrides**: change palette colors
 * **custom_highlight_groups**: override or add groups
+* **contrast** option: set contrast for colors bg1, bg2, bg3 and fg1
 * **treesitter support**
 
 ## CONTRIBUTING
@@ -59,6 +60,7 @@ This plugin is a work in progress, and there are many things missing! I am more 
     --    value = 0.5,
     --    exclude = {},
     --  },
+    --  contrast = 0.8,
     --  palette_overrides = {},
     --  custom_highlight_groups = {},
     --})
@@ -95,6 +97,7 @@ an example setup with Lazy :
           light_blue,
         }
       },
+      contrast = 1,
       palette_overrides = {
         green = "#3CB371",
       },
