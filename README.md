@@ -51,7 +51,6 @@ This plugin is a work in progress, and there are many things missing! I am more 
   lazy = false,
   priority = 1000,
   config = function()
-    vim.cmd('colorscheme xresources')
     --Optional config:
     --require('nvim-xresources').setup({
     --  xresources_path = os.getenv("HOME") .. '/.Xresources',
@@ -63,6 +62,7 @@ This plugin is a work in progress, and there are many things missing! I am more 
     --  palette_overrides = {},
     --  custom_highlight_groups = {},
     --})
+    vim.cmd('colorscheme xresources')
   end
 }
 ```
@@ -83,8 +83,6 @@ an example setup with Lazy :
   lazy = false,
   priority = 1000,
   config = function()
-    vim.cmd('colorscheme xresources')
-
     local C = require('nvim-xresources.colors')
 
     require('nvim-xresources').setup({
@@ -107,6 +105,7 @@ an example setup with Lazy :
         pythonFunction = { guifg = C.cyan, guibg = nil, gui = "bold", guisp = nil },
       },
     })
+    vim.cmd('colorscheme xresources')
   end
 }
 ```
