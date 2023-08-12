@@ -2,6 +2,28 @@
 
 **nvim-xresources** is a colorscheme for ([Neovim](https://github.com/neovim/neovim) that uses your Xresources colors.
 
+<details>
+<summary>Screenshots</summary>
+
+* with Nord Xresources:
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/89019438/260228482-b3813460-0361-4484-a7cd-9c06df0e3dfd.png" style="max-width: 70%;">
+</p>
+
+* with a kind of Gruvbox Xresources:
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/89019438/260228595-bae7713a-d58d-43a4-9fc0-18eef2f02ea7.png" style="max-width: 70%;">
+</p>
+
+* with Manjaro i3wm Xresources:
+
+<p align="center">
+<img src="https://user-images.githubusercontent.com/89019438/260228869-4163230d-2f5a-41a7-9b64-05e50c17dff9.png" style="max-width: 70%;">
+</p>
+</details>
+
 ## WHY ?
 
 I've never really enjoyed using a colorscheme: for me, the ideal setup is the nvim default with my colors defined in Xresources. However many plugins require the use of true colors with `set termguicolors`. The concept of this plugin is to stay faithful to the colors defined in Xresources, but in true colors.
@@ -14,10 +36,6 @@ This plugin aims for simplicity, though I have incorporated a few extra choices:
 * **palette_overrides**: change palette colors
 * **custom_highlight_groups**: override or add groups
 * **treesitter support**
-
-<p align="center">
-<img src="https://user-images.githubusercontent.com/89019438/260174496-d7fc80a6-5b77-45ae-aece-3b2d3193e246.png">
-</p>
 
 ## CONTRIBUTING
 
@@ -34,16 +52,17 @@ This plugin is a work in progress, and there are many things missing! I am more 
   priority = 1000,
   config = function()
     vim.cmd('colorscheme xresources')
-    require('nvim-xresources').setup({
-      xresources_path = os.getenv("HOME") .. '/.Xresources',
-      auto_light = {
-        enable = true,
-        value = 0.5,
-        exclude = {},
-      },
-      palette_overrides = {},
-      custom_highlight_groups = {},
-    })
+    --Optional config:
+    --require('nvim-xresources').setup({
+    --  xresources_path = os.getenv("HOME") .. '/.Xresources',
+    --  auto_light = {
+    --    enable = true,
+    --    value = 0.5,
+    --    exclude = {},
+    --  },
+    --  palette_overrides = {},
+    --  custom_highlight_groups = {},
+    --})
   end
 }
 ```
@@ -56,7 +75,7 @@ vim.cmd('colorscheme xresources')
 
 ## CONFIG
 
-an example setup :
+an example setup with Lazy :
 
 ```lua
 {
@@ -90,6 +109,25 @@ an example setup :
     })
   end
 }
+```
+
+## USAGE
+
+You can use colors from `nvim-xresources` in other parts of your config. In the following example, I use `nvim-xresources` colors in [nvim-lilypond-suite](https://github.com/martineausimon/nvim-lilypond-suite) config :
+
+```lua
+local C = require('nvim-xresources.colors')
+
+require('nvls').setup({
+  lilypond = {
+    highlights = { 
+      lilyVar = { 
+        fg = C.blue 
+      }
+    },
+  },
+})
+
 ```
 
 ## CREDITS, INSPIRATION
