@@ -32,17 +32,17 @@ M.loadSyntax = function()
     Define         = 'PreProc',
     Delimiter      = 'Special',
     Error          = { guifg = C.red, guibg = C.none, gui = nil, guisp = nil },
-    Exception      = { guifg = C.yellow, guibg = C.none, gui = nil, guisp = nil },
+    Exception      = 'Statement',
     Float          = { guifg = C.magenta, guibg = C.none, gui = nil, guisp = nil },
-    Function       = { guifg = C.cyan, guibg = C.none, gui = 'bold', guisp = nil },
+    Function       = 'Identifier',
     Identifier     = { guifg = C.cyan, guibg = C.none, gui = 'bold', guisp = nil },
     Ignore         = { guifg = C.none, guibg = C.none, gui = nil, guisp = nil },
     Include        = 'PreProc',
-    Keyword        = { guifg = C.yellow, guibg = C.none, gui = 'bold', guisp = nil },
-    Label          = { guifg = C.yellow, guibg = C.none, gui = 'bold', guisp = nil },
+    Keyword        = 'Statement',
+    Label          = 'Statement',
     Macro          = 'PreProc',
     Number         = 'Constant',
-    Operator       = { guifg = C.yellow, guibg = C.none, gui = 'bold', guisp = nil },
+    Operator       = { guifg = C.light_yellow, guibg = C.none, gui = 'none', guisp = nil },
     PreProc        = { guifg = C.light_blue, guibg = C.none, gui = nil, guisp = nil },
     PreCondit      = 'PreProc',
     Repeat         = { guifg = C.yellow, guibg = C.none, gui = 'bold', guisp = nil },
@@ -109,8 +109,8 @@ M.loadEditor = function()
     FloatBorder              = { guifg = C.black1, guibg = C.black1, gui = nil, guisp = nil },
     NonText                  = { guifg = C.grey, guibg = C.none, gui = nil, guisp = nil },
     Pmenu                    = { guifg = C.fg, guibg = C.black1, gui = nil, guisp = nil },
-    PmenuSel                 = { guifg = C.grey, guibg = C.blue, gui = nil, guisp = nil },
-    PmenuSelBold             = { guifg = C.grey, guibg = C.blue, gui = nil, guisp = nil },
+    PmenuSel                 = { guifg = C.black, guibg = C.blue, gui = nil, guisp = nil },
+    PmenuSelBold             = { guifg = C.black, guibg = C.blue, gui = "bold", guisp = nil },
     PmenuSbar                = { guifg = C.none, guibg = C.grey, gui = nil, guisp = nil },
     PmenuThumb               = { guifg = C.magenta, guibg = C.green, gui = nil, guisp = nil },
     Question                 = { guifg = C.yellow, guibg = C.none, gui = nil, guisp = nil },
@@ -142,7 +142,7 @@ end
 M.loadFiletypes = function()
   return {
     markdownitalic            = { guifg = nil, guibg = nil, gui = "italic", guisp = nil },
-    --markdownbold              = { guifg = nil, guibg = nil, gui = "bold", guisp = nil },
+    markdownbold              = { guifg = nil, guibg = nil, gui = "bold", guisp = nil },
     markdownbolditalic        = { guifg = nil, guibg = nil, gui = "bold,italic", guisp = nil },
     markdownh1                = { guifg = C.yellow, guibg = nil, gui = "bold", guisp = nil },
     markdownh2                = { guifg = C.cyan, guibg = nil, gui = "bold", guisp = nil },
@@ -171,10 +171,14 @@ end
 
 M.loadPlugins = function()
   return {
+    CmpItemAbbr           = { guifg = C.fg, guibg = C.none, gui = nil, guisp = nil },
+    CmpItemAbbrMatch      = { guifg = C.blue, guibg = C.none, gui = nil, guisp = nil },
+    CmpItemKindDefault    = { guifg = C.yellow, guibg = C.none, gui = nil, guisp = nil },
     CmpItemMenu           = { guifg = C.cyan, guibg = C.none, gui = nil, guisp = nil },
     CmpItemMenuDefault    = { guifg = C.yellow, guibg = C.none, gui = nil, guisp = nil },
-    CmpItemAbbrMatch      = { guifg = C.blue, guibg = C.none, gui = nil, guisp = nil },
+
     NoiceCursor           = { guifg = C.none, guibg = C.none, gui = 'reverse', guisp = nil },
+
     TelescopeBorder       = { guifg = C.black2, guibg = C.black2, gui = nil, guisp = nil },
     TelescopePromptBorder = { guifg = C.black1, guibg = C.black1, gui = nil, guisp = nil },
     TelescopePromptNormal = { guifg = C.fg, guibg = C.black1, gui = nil, guisp = nil },
@@ -185,6 +189,7 @@ M.loadPlugins = function()
     TelescopeResultsTitle = { guifg = C.yellow, guibg = nil, gui = 'underline', guisp = nil },
     TelescopeSelection    = { guifg = nil, guibg = C.black1, gui = nil, guisp = nil },
     TelescopePreviewLine  = { guifg = nil, guibg = C.black1, gui = 'none', guisp = nil },
+
     NvimTreeNormal        = 'NormalFloat',
     NvimTreeSymlink       = { guifg = C.cyan, guibg = C.none, gui = 'bold', guisp = nil },
     NvimTreeRootFolder    = { guifg = C.magenta, guibg = C.none, gui = 'bold', guisp = nil },
@@ -202,7 +207,6 @@ M.loadPlugins = function()
     NvimTreeGitNew        = { guifg = C.yellow, guibg = C.none, gui = nil, guisp = nil },
     NvimTreeGitDeleted    = { guifg = C.red, guibg = C.none, gui = nil, guisp = nil },
     NvimTreeWindowPicker  = { guifg = C.cyan, guibg = C.none, gui = nil, guisp = nil },
-
   }
 end
 
@@ -302,10 +306,5 @@ M.loadTreesitter = function()
     ["@lsp.type.variable"] = "@variable",
   }
 end
-
---M.loadCustom = function()
---  custom = require('nvim-xresources').config
---  return custom.custom_highlight_groups
---end
 
 return M
