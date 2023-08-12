@@ -35,6 +35,17 @@ local function rgb_to_hex(r, g, b)
   return bit.tohex(bit.bor(bit.lshift(r, 16), bit.lshift(g, 8), b), 6)
 end
 
+function M.shaker(hex1, hex2)
+  local r1, g1, b1 = hex_to_rgb(string.sub(hex1, 2))
+  local r2, g2, b2 = hex_to_rgb(string.sub(hex2, 2))
+
+  local r_shaker = (r1 + r2) / 2
+  local g_shaker = (g1 + g2) / 2
+  local b_shaker = (b1 + b2) / 2
+
+  return string.format("#%s", rgb_to_hex(r_shaker, g_shaker, b_shaker))
+end
+
 function M.light(hex, pct)
   pct = 1 + pct
   local r, g, b = hex_to_rgb(string.sub(hex, 2))
