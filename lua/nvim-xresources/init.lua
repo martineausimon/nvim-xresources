@@ -25,7 +25,7 @@ local function prepare_env()
 end
 
 local function highlight(colorSet)
-  local _ColorSet = M.custom_highlight_groups and vim.tbl_deep_extend("force", {}, colorSet, M.custom_highlight_groups) or colorSet
+  local _ColorSet = vim.tbl_deep_extend("force", {}, colorSet, M.custom_hl_grp or {})
 
   for hlgroup, args in pairs(_ColorSet) do
     if type(args) == 'string' then
@@ -47,7 +47,7 @@ function M.setup(config)
 end
 
 function M.custom_highlight_groups(config)
-  M.custom_highlight_groups = config or nil
+  M.custom_hl_grp = config
 end
 
 M.load = function()
