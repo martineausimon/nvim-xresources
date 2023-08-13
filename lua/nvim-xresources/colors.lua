@@ -3,7 +3,7 @@ local System = require('nvim-xresources.system')
 local config = require('nvim-xresources').config
 
 local colors = {}
-
+local contrast = config.contrast
 local xresources = System.load_cached_xresources()
 
 colors = {
@@ -49,7 +49,7 @@ if config.auto_light.enable then
     light_white   = 'white',
   }) do
     if not excluded_colors[light_color] then
-      colors[light_color] = Tools.light(colors[base_color], config.auto_light.value)
+      colors[light_color] = Tools.light(colors[base_color], contrast * config.auto_light.value)
     end
   end
 end
@@ -58,16 +58,11 @@ for color, hex in pairs(config.palette_overrides) do
   colors[color] = hex
 end
 
-local adjustContrast = function(hexColor, contrast)
-  return Tools.light(hexColor, contrast)
-end
-
-local contrast = config.contrast
-
-colors.fg1  = adjustContrast(colors.fg, contrast)
-colors.bg1  = adjustContrast(colors.bg, contrast * 0.2)
-colors.bg2  = adjustContrast(colors.bg, contrast * 0.5)
-colors.bg3  = adjustContrast(colors.bg, contrast * 0.9)
+colors.fg1  = Tools.light(colors.fg, contrast * 1)
+colors.bg1  = Tools.light(colors.bg, contrast * 0.2)
+colors.bg2  = Tools.light(colors.bg, contrast * 0.5)
+colors.bg3  = Tools.light(colors.bg, contrast * 0.9)
+colors._bg = Tools.too_black(colors.bg) and colors.bg1 or Tools.light(colors.bg, contrast * -0.15)
 
 colors['grey'] = Tools.shaker(colors.white, colors.black)
 
