@@ -93,8 +93,8 @@ an example setup with Lazy. Pay attention to the order of the elements: `require
         enable = true,
         value = 0.5,
         exclude = {
-          light_green,
-          light_blue,
+          "light_green",
+          "light_blue",
         }
       },
       contrast = 0.6,
