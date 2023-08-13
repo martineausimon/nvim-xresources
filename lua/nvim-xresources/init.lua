@@ -44,8 +44,10 @@ function M.setup(config)
   M.config = vim.tbl_deep_extend("force", M.config, config or {})
 end
 
+local custom_hl_grp
+
 function M.custom_highlight_groups(config)
-  M.custom_hl_grp = config or nil
+  custom_hl_grp = config or nil
 end
 
 M.load = function()
@@ -67,8 +69,13 @@ M.load = function()
   highlight(treesitter)
   highlight(filetypes)
 
-  if M.custom_hl_grp then highlight(M.custom_hl_grp) end
+  if custom_hl_grp then highlight(custom_hl_grp) end
 
 end
+
+vim.api.nvim_create_user_command('ShowPalette',
+  function() require('nvim-xresources.tools').show_palette() end,
+  { desc = "Show palette colors in a floating window" }
+)
 
 return M

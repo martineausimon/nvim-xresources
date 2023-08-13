@@ -72,4 +72,78 @@ function M.light(hex, pct)
   return string.format("#%s", rgb_to_hex(r, g, b))
 end
 
+function M.show_palette()
+
+  local C = require('nvim-xresources.colors')
+
+  local function create_color_table()
+    local color_table = {}
+
+    for color_name, color_value in pairs(C) do
+      local hex = string.sub(color_value, 2)
+      if #hex == 6 then
+        local r, g, b = hex_to_rgb(hex)
+        if r and g and b then
+          local brightness = r + g + b
+          table.insert(color_table, {
+            name = color_name,
+            value = color_value,
+            brightness = brightness
+          })
+        end
+      end
+    end
+
+    table.sort(color_table, function(a, b) return a.brightness < b.brightness end)
+
+    return color_table
+  end
+
+  local function highlight(preview_buf, lines)
+    for i, line in ipairs(lines) do
+      local color_name = line:match("^%S+")
+      if color_name then
+        local color = C[color_name]
+        if color then
+          local highlight_group = 'NvimXResources' .. i
+          vim.api.nvim_buf_add_highlight(preview_buf, -1, highlight_group, i - 1, 14, 29)
+          vim.cmd('hi ' .. highlight_group .. ' guibg=' .. color)
+        end
+      end
+    end
+  end
+
+  local screen_width, screen_height = vim.api.nvim_get_option("columns"), vim.api.nvim_get_option("lines")
+  local demi_screen_width = math.floor(screen_width / 2)
+  local demi_screen_height = math.floor(screen_height / 2)
+  local x = math.floor(demi_screen_width - 37 / 2)
+  local y = math.floor(demi_screen_height - 31 / 2)
+  local opts = {
+    relative = "win",
+    width = 37,
+    height = 24,
+    col = x,
+    row = y,
+    style = "minimal",
+    border = "single"
+  }
+
+  local preview_buf = vim.api.nvim_create_buf(false, true)
+
+  local lines = {}
+
+  string.pad_right = function(str, length)
+    return str .. string.rep(" ", length - #str)
+  end
+
+  for _, color_data in ipairs(create_color_table()) do
+    table.insert(lines, color_data.name:pad_right(30) .. color_data.value)
+  end
+
+  vim.api.nvim_buf_set_lines(preview_buf, 0, -1, true, lines)
+  vim.api.nvim_open_win(preview_buf, true, opts)
+  highlight(preview_buf, lines)
+
+end
+
 return M
