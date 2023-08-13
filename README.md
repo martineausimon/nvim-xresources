@@ -60,7 +60,7 @@ This plugin is a work in progress, and there are many things missing! I am more 
     --    value = 0.5,
     --    exclude = {},
     --  },
-    --  contrast = 0.8,
+    --  contrast = 1,
     --  palette_overrides = {},
     --  custom_highlight_groups = {},
     --})
@@ -97,7 +97,7 @@ an example setup with Lazy :
           light_blue,
         }
       },
-      contrast = 1,
+      contrast = 0.6,
       palette_overrides = {
         green = "#3CB371",
       },
