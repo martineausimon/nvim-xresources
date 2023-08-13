@@ -25,9 +25,7 @@ local function prepare_env()
 end
 
 local function highlight(colorSet)
-  local _ColorSet = vim.tbl_deep_extend("force", {}, colorSet, M.custom_hl_grp or {})
-
-  for hlgroup, args in pairs(_ColorSet) do
+  for hlgroup, args in pairs(colorSet) do
     if type(args) == 'string' then
       vim.cmd(('hi! link %s %s'):format(hlgroup, args))
     else
@@ -47,7 +45,7 @@ function M.setup(config)
 end
 
 function M.custom_highlight_groups(config)
-  M.custom_hl_grp = config
+  M.custom_hl_grp = config or nil
 end
 
 M.load = function()
@@ -68,6 +66,8 @@ M.load = function()
   highlight(plugins)
   highlight(treesitter)
   highlight(filetypes)
+
+  if M.custom_hl_grp then highlight(M.custom_hl_grp) end
 
 end
 
