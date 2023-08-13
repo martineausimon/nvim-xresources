@@ -1,6 +1,6 @@
 # nvim-xresources
 
-**nvim-xresources** is a colorscheme for ([Neovim](https://github.com/neovim/neovim) that uses your Xresources colors.
+**nvim-xresources** is a colorscheme for [Neovim](https://github.com/neovim/neovim) that uses your Xresources colors.
 
 <details>
 <summary>Screenshots</summary>
@@ -34,7 +34,7 @@ This plugin aims for simplicity, though I have incorporated a few extra choices:
 
 * **auto_light** feature: useful when Xresources only contains 8 colors
 * **palette_overrides**: change palette colors
-* **custom_highlight_groups**: override or add groups
+* **custom_highlight_groups() function**: override or add groups
 * **contrast** option: set contrast for colors bg1, bg2, bg3 and fg1
 * **treesitter support**
 
@@ -62,8 +62,10 @@ This plugin is a work in progress, and there are many things missing! I am more 
     --  },
     --  contrast = 1,
     --  palette_overrides = {},
-    --  custom_highlight_groups = {},
     --})
+    --local C = require('nvim-xresources.colors')
+    --require('nvim-xresources').custom_highlight_groups({ })
+
     vim.cmd('colorscheme xresources')
   end
 }
@@ -77,7 +79,7 @@ vim.cmd('colorscheme xresources')
 
 ## CONFIG
 
-an example setup with Lazy :
+an example setup with Lazy. Pay attention to the order of the elements: `require('nvim-xresources.colors')` must be called after the `setup()` function
 
 ```lua
 {
@@ -85,8 +87,6 @@ an example setup with Lazy :
   lazy = false,
   priority = 1000,
   config = function()
-    local C = require('nvim-xresources.colors')
-
     require('nvim-xresources').setup({
       xresources_path = os.getenv("HOME") .. '/.Xresources',
       auto_light = {
@@ -101,12 +101,15 @@ an example setup with Lazy :
       palette_overrides = {
         green = "#3CB371",
       },
-      custom_highlight_groups = {
-        -- link to a existing group :
-        pythonBuiltin = "PreProc",
-        -- or define highlights :
-        pythonFunction = { guifg = C.cyan, guibg = nil, gui = "bold", guisp = nil },
-      },
+    })
+
+    local C = require('nvim-xresources.colors')
+
+    require('nvim-xresources').custom_highlight_groups({
+      -- link to a existing group :
+      pythonBuiltin = "PreProc",
+      -- or define highlights :
+      pythonFunction = { guifg = C.cyan, guibg = nil, gui = "bold", guisp = nil },
     })
     vim.cmd('colorscheme xresources')
   end
