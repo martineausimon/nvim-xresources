@@ -37,6 +37,7 @@ This plugin aims for simplicity, though I have incorporated a few extra choices:
 * **custom_highlight_groups() function**: override or add groups
 * **contrast** option: set contrast for colors bg1, bg2, bg3 and fg1
 * **treesitter support**
+* **:ShowPalette** cmd: Show palette colors in a floating window
 
 ## CONTRIBUTING
 
@@ -118,7 +119,9 @@ an example setup with Lazy. Pay attention to the order of the elements: `require
 
 ## USAGE
 
-You can use colors from `nvim-xresources` in other parts of your config. In the following example, I use `nvim-xresources` colors in [nvim-lilypond-suite](https://github.com/martineausimon/nvim-lilypond-suite) config :
+* The `:ShowPalette` command opens a floating window displaying the palette colors, listed in ascending order of brightness
+
+* You can use colors from `nvim-xresources` in other parts of your config. In the following example, I use `nvim-xresources` colors in [nvim-lilypond-suite](https://github.com/martineausimon/nvim-lilypond-suite) config :
 
 ```lua
 local C = require('nvim-xresources.colors')
