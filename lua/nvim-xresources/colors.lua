@@ -41,12 +41,13 @@ if config.auto_light.enable then
 
   for light_color, base_color in pairs({
     light_black   = 'black',
-    light_green   = 'green',
-    light_yellow  = 'yellow',
     light_blue    = 'blue',
-    light_magenta = 'magenta',
     light_cyan    = 'cyan',
+    light_green   = 'green',
+    light_magenta = 'magenta',
+    light_red     = 'red',
     light_white   = 'white',
+    light_yellow  = 'yellow',
   }) do
     if not excluded_colors[light_color] then
       colors[light_color] = Tools.light(colors[base_color], contrast * config.auto_light.value)
