@@ -35,6 +35,11 @@ local function rgb_to_hex(r, g, b)
   return bit.tohex(bit.bor(bit.lshift(r, 16), bit.lshift(g, 8), b), 6)
 end
 
+function M.too_black(hex)
+  local r, g, b = hex_to_rgb(string.sub(hex, 2))
+  return (r + g + b) / (255 * 3) <= 0.08
+end
+
 function M.shaker(hex1, hex2)
   local r1, g1, b1 = hex_to_rgb(string.sub(hex1, 2))
   local r2, g2, b2 = hex_to_rgb(string.sub(hex2, 2))
