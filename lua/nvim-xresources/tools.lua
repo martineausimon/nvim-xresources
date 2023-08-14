@@ -117,7 +117,7 @@ function M.show_palette()
   local demi_screen_width = math.floor(screen_width / 2)
   local demi_screen_height = math.floor(screen_height / 2)
   local x = math.floor(demi_screen_width - 37 / 2)
-  local y = math.floor(demi_screen_height - 31 / 2)
+  local y = math.floor(demi_screen_height - 24 / 2)
   local opts = {
     relative = "win",
     width = 37,
