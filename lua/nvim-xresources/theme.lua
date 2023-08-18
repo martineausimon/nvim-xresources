@@ -207,6 +207,22 @@ M.loadPlugins = function()
     NvimTreeGitNew        = { guifg = C.yellow, guibg = C.none, gui = nil, guisp = nil },
     NvimTreeGitDeleted    = { guifg = C.red, guibg = C.none, gui = nil, guisp = nil },
     NvimTreeWindowPicker  = { guifg = C.cyan, guibg = C.none, gui = nil, guisp = nil },
+
+    NotifyERRORBorder     = { guifg= C.bg3 },
+    NotifyWARNBorder      = { guifg= C.bg3 },
+    NotifyINFOBorder      = { guifg= C.bg3 },
+    NotifyDEBUGBorder     = { guifg= C.bg3 },
+    NotifyTRACEBorder     = { guifg= C.bg3 },
+    NotifyERRORIcon       = { guifg= C.light_yellow },
+    NotifyWARNIcon        = { guifg= C.light_red },
+    NotifyINFOIcon        = { guifg= C.light_cyan },
+    NotifyDEBUGIcon       = { guifg= C.light_green },
+    NotifyTRACEIcon       = { guifg= C.light_magenta },
+    NotifyERRORTitle      = { guifg= C.yellow },
+    NotifyWARNTitle       = { guifg= C.red },
+    NotifyINFOTitle       = { guifg= C.cyan },
+    NotifyDEBUGTitle      = { guifg= C.green },
+    NotifyTRACETitle      = { guifg= C.magenta },
   }
 end
 
