@@ -223,6 +223,10 @@ M.loadPlugins = function()
     NotifyINFOTitle       = { guifg= C.cyan },
     NotifyDEBUGTitle      = { guifg= C.green },
     NotifyTRACETitle      = { guifg= C.magenta },
+
+    GitSignsDelete        = { guifg = C.light_red },
+    GitSignsChange        = { guifg = C.light_yellow },
+    GitSignsAdd           = { guifg = C.light_cyan }
   }
 end
 
