@@ -36,8 +36,8 @@ This plugin aims for simplicity, though I have incorporated a few extra choices:
 * **palette_overrides**: change palette colors
 * **custom_highlight_groups() function**: override or add groups
 * **contrast** option: set contrast for colors bg1, bg2, bg3 and fg1
-* **treesitter support**
 * **:ShowPalette** cmd: Show palette colors in a floating window
+* supports [lualine](https://github.com/nvim-lualine/lualine.nvim), [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter), [noice](https://github.com/folke/noice.nvim), [nvim-telescope](https://github.com/nvim-telescope/telescope.nvim)...
 
 ## CONTRIBUTING
 
