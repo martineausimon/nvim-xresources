@@ -1,7 +1,10 @@
 local M = {}
 
-M.config = {
+local options
+
+local default = {
   xresources_path = os.getenv("HOME") .. '/.Xresources',
+  termux_colors_path = os.getenv("HOME") .. '/.termux/colors.properties',
   auto_light = {
     enable = true,
     value = 0.5,
@@ -9,6 +12,7 @@ M.config = {
   },
   contrast = 1,
   palette_overrides = {},
+  fallback_theme = "nord"
 }
 
 local function prepare_env()
@@ -41,7 +45,11 @@ local function highlight(colorSet)
 end
 
 function M.setup(config)
-  M.config = vim.tbl_deep_extend("force", M.config, config or {})
+  options = vim.tbl_deep_extend("force", default, config or {})
+end
+
+function M.options()
+  return options
 end
 
 local custom_hl_grp

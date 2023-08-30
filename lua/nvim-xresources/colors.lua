@@ -1,41 +1,50 @@
 local Tools = require('nvim-xresources.tools')
 local System = require('nvim-xresources.system')
-local config = require('nvim-xresources').config
+local opts = require('nvim-xresources').options()
+
+local contrast, termux_path = opts.contrast, opts.termux_colors_path
+local system
 
 local colors = {}
-local contrast = config.contrast
-local xresources = System.load_cached_xresources()
+
+if vim.fn.has('termux)') == 1 and Tools.exists(termux_path) then
+  system = System.load_termux_colors()
+elseif Tools.exists(opts.xresources_path) then
+  system = System.load_cached_xresources()
+else
+  system = System.fallback_colors()
+end
 
 colors = {
-  fg            = xresources.foreground,
-  bg            = xresources.background,
-  black         = xresources.color0,
-  red           = xresources.color1,
-  green         = xresources.color2,
-  yellow        = xresources.color3,
-  blue          = xresources.color4,
-  magenta       = xresources.color5,
-  cyan          = xresources.color6,
-  white         = xresources.color7,
-  light_black   = xresources.color8,
-  light_red     = xresources.color9,
-  light_green   = xresources.color10,
-  light_yellow  = xresources.color11,
-  light_blue    = xresources.color12,
-  light_magenta = xresources.color13,
-  light_cyan    = xresources.color14,
-  light_white   = xresources.color15,
+  fg            = system.foreground,
+  bg            = system.background,
+  black         = system.color0,
+  red           = system.color1,
+  green         = system.color2,
+  yellow        = system.color3,
+  blue          = system.color4,
+  magenta       = system.color5,
+  cyan          = system.color6,
+  white         = system.color7,
+  light_black   = system.color8,
+  light_red     = system.color9,
+  light_green   = system.color10,
+  light_yellow  = system.color11,
+  light_blue    = system.color12,
+  light_magenta = system.color13,
+  light_cyan    = system.color14,
+  light_white   = system.color15,
   none = 'NONE',
 }
 
-for color, hex in pairs(config.palette_overrides) do
+for color, hex in pairs(opts.palette_overrides) do
   colors[color] = hex
 end
 
-if config.auto_light.enable then
+if opts.auto_light.enable then
   local excluded_colors = {}
 
-  for _, color in ipairs(config.auto_light.exclude) do
+  for _, color in ipairs(opts.auto_light.exclude) do
     excluded_colors[color] = true
   end
 
@@ -50,12 +59,12 @@ if config.auto_light.enable then
     light_yellow  = 'yellow',
   }) do
     if not excluded_colors[light_color] then
-      colors[light_color] = Tools.light(colors[base_color], contrast * config.auto_light.value)
+      colors[light_color] = Tools.light(colors[base_color], contrast * opts.auto_light.value)
     end
   end
 end
 
-for color, hex in pairs(config.palette_overrides) do
+for color, hex in pairs(opts.palette_overrides) do
   colors[color] = hex
 end
 

@@ -146,4 +146,8 @@ function M.show_palette()
 
 end
 
+function M.exists(path)
+  return io.open(vim.fn.glob(path)) ~= nil
+end
+
 return M
