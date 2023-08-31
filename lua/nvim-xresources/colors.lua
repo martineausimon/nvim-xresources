@@ -7,7 +7,7 @@ local system
 
 local colors = {}
 
-if vim.fn.has('termux)') == 1 and Tools.exists(termux_path) then
+if vim.fn.has('termux)') and Tools.exists(termux_path) then
   system = System.load_termux_colors()
 elseif Tools.exists(opts.xresources_path) then
   system = System.load_cached_xresources()

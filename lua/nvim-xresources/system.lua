@@ -29,12 +29,13 @@ end
 
 local function get_termux_color(c)
   local opts = require('nvim-xresources').options()
-  local colors_file = opts.termux_colors_path
+  local termux_colors = io.open(opts.termux_colors_path)
+  if not termux_colors then return end
 
-  for line in colors_file:lines() do
+  for line in termux_colors:lines() do
     local name, hex = line:match("(%S+):%s*(%S+)")
     if name == c then
-      colors_file:close()
+      termux_colors:close()
       return hex
     end
   end
