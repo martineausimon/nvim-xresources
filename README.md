@@ -80,7 +80,7 @@ add this line in your `init.lua` :
 vim.cmd('colorscheme xresources')
 ```
 
-> Note: This plugin works with `xrdb` (or `colors.properties` in Termux). You need a system configured with this, otherwise, a fallback theme will be used (default `nord`)
+> Note: This plugin works with `xrdb` (or `colors.properties` in Termux). You need a system configured with this, otherwise, a fallback theme will be used (default `nord`, available `tokyonight`)
 
 ## CONFIG
 
