@@ -37,6 +37,7 @@ This plugin aims for simplicity, though I have incorporated a few extra choices:
 * **custom_highlight_groups() function**: override or add groups
 * **contrast** option: set contrast for colors bg1, bg2, bg3 and fg1
 * **:ShowPalette** cmd: Show palette colors in a floating window
+* Supports **termux** colors.properties
 * supports [lualine](https://github.com/nvim-lualine/lualine.nvim), [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter), [noice](https://github.com/folke/noice.nvim), [nvim-telescope](https://github.com/nvim-telescope/telescope.nvim)...
 
 ## CONTRIBUTING
@@ -63,6 +64,7 @@ This plugin is a work in progress, and there are many things missing! I am more 
     --  },
     --  contrast = 1,
     --  palette_overrides = {},
+    --  fallback_theme = "nord"
     --})
     --local C = require('nvim-xresources.colors')
     --require('nvim-xresources').custom_highlight_groups({ })
@@ -77,6 +79,8 @@ add this line in your `init.lua` :
 ```lua
 vim.cmd('colorscheme xresources')
 ```
+
+> Note: This plugin works with `xrdb` (or `colors.properties` in Termux). You need a system configured with this, otherwise, a fallback theme will be used (default `nord`)
 
 ## CONFIG
 
