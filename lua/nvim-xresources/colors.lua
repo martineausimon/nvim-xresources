@@ -69,10 +69,10 @@ for color, hex in pairs(opts.palette_overrides) do
 end
 
 colors.fg1 = Tools.light(colors.fg, contrast * 1)
-colors.bg1 = Tools.light(colors.bg, contrast * 0.2)
+colors.bg1 = Tools.too_black(colors.bg) and Tools.light(colors.bg, contrast * 0.25) or Tools.light(colors.bg, contrast * 0.2)
 colors.bg2 = Tools.light(colors.bg, contrast * 0.5)
 colors.bg3 = Tools.light(colors.bg, contrast * 0.9)
-colors._bg = Tools.too_black(colors.bg) and colors.bg1 or Tools.light(colors.bg, contrast * -0.15)
+colors._bg = Tools.too_black(colors.bg) and Tools.light(colors.bg, contrast * 0.15) or Tools.light(colors.bg, contrast * -0.15)
 
 colors['grey'] = Tools.shaker(colors.white, colors.black)
 

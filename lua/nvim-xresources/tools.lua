@@ -54,9 +54,17 @@ end
 function M.light(hex, pct)
   pct = 1 + pct
   local r, g, b = hex_to_rgb(string.sub(hex, 2))
-  r = math.floor(r * pct)
-  g = math.floor(g * pct)
-  b = math.floor(b * pct)
+
+  if r == 0 and g == 0 and b == 0 then
+    r = math.min(255, r - (255 / 2) + pct * (255 / 2))
+    g = math.min(255, g - (255 / 2) + pct * (255 / 2))
+    b = math.min(255, b - (255 / 2) + pct * (255 / 2))
+  else
+
+    r = math.floor(r * pct)
+    g = math.floor(g * pct)
+    b = math.floor(b * pct)
+  end
 
   r = r < 0 and 0 or (r > 255 and 255 or r)
   g = g < 0 and 0 or (g > 255 and 255 or g)
