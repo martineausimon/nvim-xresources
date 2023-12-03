@@ -63,6 +63,7 @@ This plugin is a work in progress, and there are many things missing! I am more 
     --    exclude = {},
     --  },
     --  contrast = 1,
+    --  bold = true,
     --  palette_overrides = {},
     --  fallback_theme = "nord"
     --})
@@ -103,6 +104,7 @@ an example setup with Lazy. Pay attention to the order of the elements: `require
         }
       },
       contrast = 0.6,
+      bold = false,
       palette_overrides = {
         green = "#3CB371",
       },
@@ -114,7 +116,7 @@ an example setup with Lazy. Pay attention to the order of the elements: `require
       -- link to a existing group :
       pythonBuiltin = "PreProc",
       -- or define highlights :
-      pythonFunction = { guifg = C.cyan, guibg = nil, gui = "bold", guisp = nil },
+      pythonFunction = { guifg = C.cyan, guibg = nil, gui = C.bold, guisp = nil }, -- use "bold" if you want to bypass bold true/false option
     })
     vim.cmd('colorscheme xresources')
   end
