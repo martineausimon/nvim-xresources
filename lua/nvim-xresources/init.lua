@@ -11,6 +11,7 @@ local default = {
     exclude = {}
   },
   contrast = 1,
+  bold = true,
   palette_overrides = {},
   fallback_theme = "nord"
 }

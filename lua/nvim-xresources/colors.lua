@@ -15,6 +15,8 @@ else
   system = System.fallback_colors()
 end
 
+local bold = opts.bold and 'bold' or 'none'
+
 colors = {
   fg            = system.foreground,
   bg            = system.background,
@@ -34,6 +36,7 @@ colors = {
   light_magenta = system.color13,
   light_cyan    = system.color14,
   light_white   = system.color15,
+  bold          = bold,
   none = 'NONE',
 }
 
