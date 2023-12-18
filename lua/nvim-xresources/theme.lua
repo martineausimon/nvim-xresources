@@ -110,6 +110,7 @@ M.loadEditor = function()
     Normal                   = { guifg = C.fg, guibg = C.bg, gui = nil, guisp = nil },
     NormalFloat              = { guifg = C.fg, guibg = C._bg, gui = nil, guisp = nil },
     FloatBorder              = { guifg = C.bg2, guibg = C._bg, gui = nil, guisp = nil },
+    FloatTitle               = { guifg = C.green, guibg = C._bg, gui = C.bold, guisp = nil },
     NonText                  = { guifg = C.grey, guibg = C.none, gui = nil, guisp = nil },
     Pmenu                    = { guifg = C.fg1, guibg = C._bg, gui = nil, guisp = nil },
     PmenuSel                 = { guifg = C.black, guibg = C.blue, gui = nil, guisp = nil },
