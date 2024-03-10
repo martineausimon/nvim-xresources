@@ -54,8 +54,8 @@ This plugin is a work in progress, and there are many things missing! I am more 
   lazy = false,
   priority = 1000,
   config = function()
-    --Optional config:
-    --require('nvim-xresources').setup({
+    require('nvim-xresources').setup({
+    --  Optional config:
     --  xresources_path = os.getenv("HOME") .. '/.Xresources',
     --  auto_light = {
     --    enable = true,
@@ -66,19 +66,13 @@ This plugin is a work in progress, and there are many things missing! I am more 
     --  bold = true,
     --  palette_overrides = {},
     --  fallback_theme = "nord"
-    --})
+    })
     --local C = require('nvim-xresources.colors')
     --require('nvim-xresources').custom_highlight_groups({ })
 
     vim.cmd('colorscheme xresources')
   end
 }
-```
-
-add this line in your `init.lua` :
-
-```lua
-vim.cmd('colorscheme xresources')
 ```
 
 > Note: This plugin works with `xrdb` (or `colors.properties` in Termux). You need a system configured with this, otherwise, a fallback theme will be used (default `nord`, available `tokyonight`)
